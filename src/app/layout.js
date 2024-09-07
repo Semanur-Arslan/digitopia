@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "../styles/globals.css";
 import ReduxProvider from '../app/provider';
+import Toast from "@/components/Toast";
 
 const geistSans = localFont({
   src: "../../public/fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         <ReduxProvider>
           {children}
+          <Toast />
         </ReduxProvider>
       </body>
     </html>

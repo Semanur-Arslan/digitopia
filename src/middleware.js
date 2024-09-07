@@ -5,7 +5,7 @@ export function middleware(request) {
 
   const isAuthenticated = false; 
 
-  if (!isAuthenticated && pathname !== '/login') {
+  if (!isAuthenticated && pathname !== '/login' && !pathname.startsWith('/_next/') && !pathname.startsWith('/static/')) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 

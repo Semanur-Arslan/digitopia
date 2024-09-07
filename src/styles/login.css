@@ -1,0 +1,63 @@
+.wrapper {
+    position: relative;
+    height: 96vh;
+    background: #758ef0;
+    background: -webkit-linear-gradient(to left, #f3b3f0, #758ef0), url('../images/bgIcon.svg');
+    background: linear-gradient(to left, #f3b3f0, #758ef0), url('../images/bgIcon.svg');
+    background-size: cover, 64%;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-position: 90% 24%;
+}
+
+.bg-gradiend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.bg-gradiend svg {
+    position: relative;
+    display: block;
+    width: calc(119% + 1.3px);
+    height: 250px;
+}
+
+.bg-gradiend .shape-fill {
+    fill: #ffffff;
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .wrapper {
+        height: 100vh;
+    }
+
+    .bg-gradiend svg {
+        position: relative;
+        display: block;
+        width: calc(120% + 1.3px);
+        height: 200px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .wrapper {
+        height: 100vh;
+        background-position: right top;
+        background-size: cover, 100%;
+    }
+
+    .bg-gradiend svg {
+        position: relative;
+        display: block;
+        width: calc(120% + 1.3px);
+        height: 96px;
+    }
+}
