@@ -16,8 +16,8 @@ module.exports = {
         secondaryHover: '#cb8fc8',
         info:'#fcd34d',
         success: '#16a34a',
-        error:'#dc2626'
-        
+        error:'#dc2626',
+        gray: '#f3f4f6'
       },
     },
   },

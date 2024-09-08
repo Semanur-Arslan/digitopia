@@ -1,20 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { login } from './authAPI';
+import { jwtDecode } from "jwt-decode";
+
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
+    accessToken: null,
+    refreshToken: null,
+    idToken: null,
     status: 'idle',
     error: null,
   },
   reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
+    setTokens: (state, action) => {
+      const { idToken, refreshToken, accessToken } = action.payload;
+
+      state.idToken = idToken.jwtToken;
+      state.refreshToken = refreshToken.token;
+      state.accessToken = accessToken.jwtToken;
+
+      if (idToken.jwtToken) {
+        const decodedIdToken = jwtDecode(idToken.jwtToken);
+        state.user = {
+          organizationId: decodedIdToken['custom:organizationId'],
+          role: decodedIdToken['custom:role'],
+          organizationRole: decodedIdToken['custom:organizationRole'],
+          name: decodedIdToken['name'],
+          familyName: decodedIdToken['family_name']
+        };
+      }
     },
     clearUser: (state) => {
       state.user = null;
-    },
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.idToken = null;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -24,7 +47,26 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.user = action.payload;
+        const { idToken, refreshToken, accessToken } = action.payload;
+        state.idToken = idToken.jwtToken;
+        state.refreshToken = refreshToken.token;
+        state.accessToken = accessToken.jwtToken;
+
+        if (idToken.jwtToken) {
+          try {
+            const decodedIdToken = jwtDecode(idToken.jwtToken);
+            state.user = {
+              organizationId: decodedIdToken['custom:organizationId'],
+              role: decodedIdToken['custom:role'],
+              organizationRole: decodedIdToken['custom:organizationRole'],
+              name: decodedIdToken['name'],
+              familyName: decodedIdToken['family_name']
+            };
+          } catch (error) {
+            console.error('Error decoding token:', error);
+            state.error = 'Failed to decode token';
+          }
+        }
       })
       .addCase(login.rejected, (state, action) => {
         state.status = 'failed';
@@ -33,5 +75,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, clearUser } = authSlice.actions;
+export const { setTokens, clearUser } = authSlice.actions;
 export default authSlice.reducer;

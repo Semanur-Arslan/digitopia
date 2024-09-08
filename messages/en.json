@@ -1,0 +1,26 @@
+{
+  "Pages": {
+    "loading": "Loading"
+  },
+  "Header": {
+    "home": "Home",
+    "chart": "Chart"
+  },
+  "LoginPage": {
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "password": "Password"
+  },
+  "Homepage": {
+    "hello": "Hello",
+    "message": "Welcome to the world of Digitopia",
+    "seeCharts": "See Charts"
+
+
+  },
+  "LanguageSelector": {
+    "selectLanguage": "Selected Language",
+    "en": "English",
+    "tr": "Turkish"
+  }
+}

@@ -18,7 +18,7 @@ const Toast = () => {
   }, [messages, dispatch]);
 
   return (
-    <div className="fixed top-4 right-4 space-y-2">
+    <div className="fixed top-4 right-4 space-y-2 flex justify-center w-full">
       {messages.map(({ id, message, type }) => (
         <div
           key={id}
