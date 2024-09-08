@@ -1,0 +1,24 @@
+{
+  "Pages": {
+    "loading": "Yükleniyor"
+  },
+  "Header": {
+    "home": "Anasayfa",
+    "chart": "Grafik"
+  },
+  "LoginPage": {
+    "signIn": "Giriş Yap",
+    "email": "E-Posta",
+    "password": "Şifre"
+  },
+  "Homepage": {
+    "hello": "Merhaba",
+    "message": "Digitopia dünyasına hoşgeldiniz",
+    "seeCharts": "Grafiklere Bakın"
+  },
+  "LanguageSelector": {
+    "selectLanguage": "dil seç",
+    "en": "İngilizce",
+    "tr": "Türkçe"
+  }
+}

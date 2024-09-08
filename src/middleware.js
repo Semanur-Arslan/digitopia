@@ -1,17 +1,12 @@
-import { NextResponse } from 'next/server';
 
-export function middleware(request) {
-  const { pathname } = request.nextUrl;
+import createMiddleware from 'next-intl/middleware';
+import { locales, defaultLocale } from './config';
 
-  const isAuthenticated = false; 
-
-  if (!isAuthenticated && pathname !== '/login' && !pathname.startsWith('/_next/') && !pathname.startsWith('/static/')) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  return NextResponse.next();
-}
-
+export default createMiddleware({
+ locales,
+ defaultLocale
+});
+ 
 export const config = {
-  matcher: ['/((?!login).*)'],
+  matcher: ['/', '/(en|tr)/:path*']
 };
