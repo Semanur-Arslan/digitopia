@@ -9,14 +9,21 @@
   "LoginPage": {
     "signIn": "Sign In",
     "email": "E-mail",
-    "password": "Password"
+    "password": "Password",
+    "loading": "Loading"
   },
-  "Homepage": {
+  "HomePage": {
     "hello": "Hello",
     "message": "Welcome to the world of Digitopia",
     "seeCharts": "See Charts"
-
-
+  },
+  "RightPanel": {
+    "profileDetails": "Profile Details",
+    "organizationName": "Organization Name",
+    "industryName": "Industry Name",
+    "countryName": "Country Name",
+    "loading": "Loading",
+    "errorMessage": "An error occurred while loading data."
   },
   "LanguageSelector": {
     "selectLanguage": "Selected Language",

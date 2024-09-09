@@ -9,7 +9,7 @@ import ButtonWithLoading from '@/components/Button';
 import { useTranslations } from 'next-intl';
 
 export default function LoginPage() {
-  const t = useTranslations('LoginPage', 'Pages');
+  const t = useTranslations('LoginPage');
 
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth.status);
