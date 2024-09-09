@@ -41,7 +41,7 @@ export default function Header () {
       </nav>
       
       <div className="flex items-center space-x-1 sm:space-x-4">
-        <span className="text-gray-700 font-semibold">{user.name}</span>
+        <span className="text-gray-700 font-semibold">{user?.name}</span>
         <MdOutlineMenu size={24} onClick={openSidebar} /> 
 
       </div>

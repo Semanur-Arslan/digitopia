@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export default function HomePage() {
-  const t = useTranslations('Homepage');
+  const t = useTranslations('HomePage');
 
   const user = useSelector((state) => state.auth.user);
   const locale = useSelector((state) => state.language.locale);

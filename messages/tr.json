@@ -9,12 +9,21 @@
   "LoginPage": {
     "signIn": "Giriş Yap",
     "email": "E-Posta",
-    "password": "Şifre"
+    "password": "Şifre",
+    "loading": "Yükleniyor"
   },
   "Homepage": {
     "hello": "Merhaba",
     "message": "Digitopia dünyasına hoşgeldiniz",
     "seeCharts": "Grafiklere Bakın"
+  },
+  "RightPanel": {
+    "profileDetails": "Profil Detayları",
+    "organizationName": "Kuruluş Adı",
+    "industryName": "Kuruluşun Sektör Adı",
+    "countryName": "Kuruluşun Ülke Adı",
+    "loading": "Yükleniyor",
+    "errorMessage": "Veriler yüklenirken bir hata oluştu."
   },
   "LanguageSelector": {
     "selectLanguage": "dil seç",

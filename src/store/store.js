@@ -5,6 +5,9 @@ import authReducer from '@/features/auth/authSlice';
 import toastReducer from '@/features/toast/toastSlice';
 import languageReducer from '@/features/language/languageSlice';
 import rightPanelReducer from '@/features/rightPanel/rightPanelSlice';
+import industriesReducer from '@/features/rightPanel/industriesSlice';
+import countriesReducer from '@/features/rightPanel/countriesSlice';
+import organizationReducer from '@/features/rightPanel/organizationSlice';
 
 // Persist configuration
 const persistConfig = {
@@ -13,15 +16,16 @@ const persistConfig = {
   storage,
 };
 
-// Combine reducers
 const rootReducer = combineReducers({
   auth: authReducer,
   toast: toastReducer,
   language: languageReducer,
-  rightPanel: rightPanelReducer
+  rightPanel: rightPanelReducer,
+  industries: industriesReducer,
+  countries: countriesReducer,
+  organization: organizationReducer,
 });
 
-// Create a persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
