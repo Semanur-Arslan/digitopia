@@ -8,6 +8,8 @@ import rightPanelReducer from '@/features/rightPanel/rightPanelSlice';
 import industriesReducer from '@/features/rightPanel/industriesSlice';
 import countriesReducer from '@/features/rightPanel/countriesSlice';
 import organizationReducer from '@/features/rightPanel/organizationSlice';
+import impactRunListReducer from '@/features/chart/impactRunListSlice';
+import retrieveListReducer from '@/features/chart/retrieveListSlice';
 
 // Persist configuration
 const persistConfig = {
@@ -24,6 +26,8 @@ const rootReducer = combineReducers({
   industries: industriesReducer,
   countries: countriesReducer,
   organization: organizationReducer,
+  impactRunList: impactRunListReducer,
+  retrieveList: retrieveListReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

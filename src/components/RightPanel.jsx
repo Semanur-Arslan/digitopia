@@ -11,6 +11,7 @@ import { LiaMapMarkedAltSolid } from "react-icons/lia";
 
 export default function RightPanel() {
     const t = useTranslations('RightPanel');
+    const t1 = useTranslations('Pages');
     const dispatch = useDispatch();
     const isOpen = useSelector((state) => state.rightPanel.isOpen);
     const token = useSelector((state) => state.auth.accessToken);
@@ -60,7 +61,7 @@ export default function RightPanel() {
                     </div>
                 )}
                 {isLoading ? (
-                    <p className="my-4">{t('loading')}</p>
+                    <p className="my-4">{t1('loading')}</p>
                 ) : (
                     organization && (
                         <div className="pt-4 ps-2">

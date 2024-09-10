@@ -29,5 +29,9 @@
     "selectLanguage": "dil seç",
     "en": "İngilizce",
     "tr": "Türkçe"
+  },
+  "ChartPage": {
+    "title": "Öneriler",
+    "btnText": "Yeni öneri ekle"
   }
 }

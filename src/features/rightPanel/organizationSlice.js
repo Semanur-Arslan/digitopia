@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getOrganizationDetails } from './api';
+import { getOrganizationDetails } from '@/app/api/rightPanel/route';
 import { activeToken, selectUser } from '../auth/authSlice'; 
 
 const organizationSlice = createSlice({
