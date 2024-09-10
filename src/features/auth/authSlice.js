@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login } from './authAPI';
+import { login } from '@/app/api/login/route';
 import { jwtDecode } from "jwt-decode";
 
 const authSlice = createSlice({

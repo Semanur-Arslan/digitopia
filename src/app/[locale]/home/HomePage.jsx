@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className='pt-24 w-full flex justify-center'>
       <div className='w-3/4 text-center pt-32'>
         <h1 className="text-4xl italic font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#f3b3f0] to-[#758ef0]">
-          {t('hello')} <span>{user.name} !</span>
+          {t('hello')} <span>{user?.name} !</span>
         </h1>
         <p className="mt-12 text-xl font-semibold text-gray-700">
           {t('message')}

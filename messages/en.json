@@ -9,8 +9,7 @@
   "LoginPage": {
     "signIn": "Sign In",
     "email": "E-mail",
-    "password": "Password",
-    "loading": "Loading"
+    "password": "Password"
   },
   "HomePage": {
     "hello": "Hello",
@@ -22,12 +21,16 @@
     "organizationName": "Organization Name",
     "industryName": "Industry Name",
     "countryName": "Country Name",
-    "loading": "Loading",
     "errorMessage": "An error occurred while loading data."
   },
   "LanguageSelector": {
     "selectLanguage": "Selected Language",
     "en": "English",
     "tr": "Turkish"
+  },
+  "ChartPage": {
+    "title": "Recommendations",
+    "btnText": "Add new recommendation"
   }
+  
 }

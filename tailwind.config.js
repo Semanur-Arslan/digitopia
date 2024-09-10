@@ -17,7 +17,8 @@ module.exports = {
         info:'#fcd34d',
         success: '#16a34a',
         error:'#dc2626',
-        gray: '#f3f4f6'
+        gray: '#f9fafb',
+        darkGray: '#a1a1aa',
       },
     },
   },

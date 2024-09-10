@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCountries } from './api';
+import { getCountries } from '@/app/api/rightPanel/route';
 
 const countriesSlice = createSlice({
   name: 'countries',
