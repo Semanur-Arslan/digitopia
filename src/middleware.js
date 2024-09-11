@@ -10,10 +10,11 @@ const intlMiddleware = createMiddleware({
 
 export function middleware(request) {
   const response = intlMiddleware(request);
-
+  
   const cookies = request.headers.get('cookie') || '';
   const parsedCookies = parse(cookies);
   const accessToken = parsedCookies.accessToken;
+
   const locale = parsedCookies.locale || 'en'; 
 
   if (!accessToken && !request.nextUrl.pathname.includes(`/${locale}/login`)) {

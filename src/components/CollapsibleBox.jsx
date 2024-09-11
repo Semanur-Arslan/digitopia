@@ -37,7 +37,7 @@ const CollapsibleBox = () => {
 
 
     return (
-        <div className={`relative ${isExpanded ? 'w-72 px-4' : 'w-16 px-1'} h-96 bg-white rounded-lg transition-all duration-300 overflow-hidden `}>
+        <div className={`relative  ${isExpanded ? 'w-72 px-4' : 'w-16 px-1'} h-48 md:h-96 bg-white rounded-lg transition-all duration-300 overflow-hidden `}>
             <div
                 className={`absolute top-0 right-0 p-2 cursor-pointer transform transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-180'}`}
                 onClick={toggleBox}

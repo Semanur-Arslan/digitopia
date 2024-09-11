@@ -17,12 +17,12 @@ export default function ChartPage() {
   }, [dispatch, token]);
 
   return (
-    <div className="pt-24  w-full flex justify-center h-screen ">
-      <div className="bg-gray p-24 flex justify-center flex-col md:flex-row">
-        <div className="pe-8">
+    <div className="relative pt-24  w-full flex justify-center h-screen ">
+      <div className="bg-gray p-24 flex justify-center flex-col md:flex-row ">
+        <div className="pe-8 flex justify-center ">
           <CollapsibleBox />
         </div>
-        <div className=" w-full">
+        <div className=" w-full mt-4 md:mt-0">
           <GanttChart />
         </div>
       </div>
