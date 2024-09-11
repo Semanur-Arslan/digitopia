@@ -1,22 +1,18 @@
 'use client'
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { login } from '@/features/auth/authSlice';
-import { setTokens } from '@/features/auth/authSlice';
-import "@/styles/login.css";
+import { login } from '../api/login/route';
+import { setTokens } from '../../features/auth/authSlice';
+import "../../styles/login.css";
+import { useState } from 'react';
 import { addToast } from '@/features/toast/toastSlice';
 import ButtonWithLoading from '@/components/Button';
-import setCookie from '@/utils/cookieUtils';
+import { useTranslations } from 'next-intl';
 
 export default function LoginPage() {
   const t = useTranslations('LoginPage');
 
-  const router = useRouter();
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth.status);
-  const locale = useSelector((state) => state.language.locale);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -42,12 +38,7 @@ export default function LoginPage() {
           refreshToken,
           accessToken
         }));
-
-        const token = accessToken.jwtToken
-
-        setCookie('accessToken', token, { expires: 2 });
-
-        router.push(`/${locale}/home`);
+        
       } else {
         dispatch(addToast({ message: 'Login failed', type: 'error' }));
       }

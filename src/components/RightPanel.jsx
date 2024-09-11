@@ -11,6 +11,7 @@ import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { CiCirclePlus } from "react-icons/ci";
 import DateRangeModal from "./DateRangeModal";
 
+
 export default function RightPanel() {
     const t = useTranslations('RightPanel');
     const t1 = useTranslations('Pages');
@@ -22,15 +23,16 @@ export default function RightPanel() {
     const { selectedRecommendation } = useSelector((state) => state.retrieveList);
     const closeSidebar = () => dispatch(closeRightPanel());
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const user = useSelector((state) => state.auth.user);
 
 
     useEffect(() => {
         if (token) {
             dispatch(fetchIndustries());
             dispatch(fetchCountries());
-            dispatch(fetchOrganizationDetails());
-        }
-    }, [dispatch, token]);
+            dispatch(fetchOrganizationDetails()) }
+
+        }, [dispatch, token, user.organizationId]);
 
     const industries = useSelector((state) => state.industries.list);
     const countries = useSelector((state) => state.countries.list);

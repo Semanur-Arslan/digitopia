@@ -1,7 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getRetrieveList } from '@/app/api/chart/route';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { impactRunId } from './impactRunListSlice';
-import { activeToken } from '../auth/authSlice'; 
+import axios from 'axios';
+
+export const fetchRetrieveList = createAsyncThunk(
+  'retrieveList/fetchRetrieveList', 
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const id = impactRunId(state);
+    
+    try {
+      const response = await axios.get(`/api/retrieveList?id=${id}`);
+      return response.data; 
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Veri alma başarısız'); 
+    }
+  }
+);
 
 const RetrieveListSlice = createSlice({
   name: 'retrieveList',
@@ -10,7 +24,6 @@ const RetrieveListSlice = createSlice({
     selectedRecommendation: null, 
     status: 'idle',
     error: null,
-
   },
   reducers: {
     setRetrieveList: (state, action) => {
@@ -29,23 +42,23 @@ const RetrieveListSlice = createSlice({
       state.status = 'succeeded';
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRetrieveList.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchRetrieveList.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.list = action.payload;
+      })
+      .addCase(fetchRetrieveList.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { setRetrieveList, setSelectedRecommendation, setError, setLoading, setLoaded } = RetrieveListSlice.actions;
 
-export const fetchRetrieveList = () => async (dispatch, getState ) => {
-  dispatch(setLoading());
-  const state = getState();
-  const token = activeToken(state);
-  const id = impactRunId(state);
-  try {
-    const response = await getRetrieveList(id, token);
-    dispatch(setRetrieveList(response));
-    dispatch(setLoaded());
-    dispatch(setError(null));
-  } catch (error) {
-    dispatch(setError(error.toString()));
-  }
-};
-
 export default RetrieveListSlice.reducer;
+
