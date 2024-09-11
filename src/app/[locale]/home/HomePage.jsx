@@ -9,7 +9,6 @@ export default function HomePage() {
   const user = useSelector((state) => state.auth.user);
   const locale = useSelector((state) => state.language.locale);
 
-
   return (
     <div className='pt-24 w-full flex justify-center'>
       <div className='w-3/4 text-center pt-32'>

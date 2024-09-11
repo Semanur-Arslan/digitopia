@@ -19,11 +19,16 @@
   },
   "RightPanel": {
     "profileDetails": "Profil Detayları",
+    "recommendationDetails": "Öneri Detayları",
     "organizationName": "Kuruluş Adı",
     "industryName": "Kuruluşun Sektör Adı",
     "countryName": "Kuruluşun Ülke Adı",
     "loading": "Yükleniyor",
-    "errorMessage": "Veriler yüklenirken bir hata oluştu."
+    "errorMessage": "Veriler yüklenirken bir hata oluştu.",
+    "size": "Boyut",
+    "duration": "Süre",
+    "add": "Ekle",
+    "save": "Kaydet"
   },
   "LanguageSelector": {
     "selectLanguage": "dil seç",
@@ -33,5 +38,11 @@
   "ChartPage": {
     "title": "Öneriler",
     "btnText": "Yeni öneri ekle"
+  },
+  "DateRangeModal": {
+    "setTime": "Süre Belirle",
+    "startDate": "Başlangıç Tarihi",
+    "endDate": "Bitiş Tarihi",
+    "save": "Kaydet"
   }
 }

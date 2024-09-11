@@ -4,13 +4,16 @@ const rightPanel = createSlice({
   name: 'rightPanel',
   initialState: {
     isOpen: false,
+    source: '',
   },
   reducers: {
-    openRightPanel: (state) => {
+    openRightPanel: (state, action) => {
       state.isOpen = true;
+      state.source = action.payload;
     },
     closeRightPanel: (state) => {
       state.isOpen = false;
+      state.source = '';
     },
   },
 });

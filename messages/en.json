@@ -18,10 +18,15 @@
   },
   "RightPanel": {
     "profileDetails": "Profile Details",
+    "recommendationDetails": "Recommendation Details",
     "organizationName": "Organization Name",
     "industryName": "Industry Name",
     "countryName": "Country Name",
-    "errorMessage": "An error occurred while loading data."
+    "errorMessage": "An error occurred while loading data.",
+    "size": "Size",
+    "duration": "Duration",
+    "add": "Add",
+    "save": "Save"
   },
   "LanguageSelector": {
     "selectLanguage": "Selected Language",
@@ -31,6 +36,12 @@
   "ChartPage": {
     "title": "Recommendations",
     "btnText": "Add new recommendation"
+  }  ,
+  "DateRangeModal": {
+    "setTime": "Set Time",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "save": "Save"
   }
   
 }

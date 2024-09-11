@@ -8,23 +8,16 @@ import { useDispatch } from 'react-redux';
 import { openRightPanel } from '@/features/rightPanel/rightPanelSlice';
 import { usePathname } from 'next/navigation';
 
-
-
 export default function Header () {
 
     const locale = useSelector((state) => state.language.locale);
     const user = useSelector((state) => state.auth.user);
     const t = useTranslations('Header');
     const dispatch = useDispatch();
-    const openSidebar = () => dispatch(openRightPanel());
+    const openSidebar = () => dispatch(openRightPanel('header'));
+    const pathname = usePathname(); 
 
-    // const auth = useSelector((state) => state.auth);
-    // console.log(auth)
-
-    const pathname = usePathname();
-    // Extract the page name (e.g., 'home', 'chart') from the pathname
     const currentPage = pathname.split('/').pop();
-
 
   return (
     <header className=" flex justify-center fixed top-0 w-full ">
