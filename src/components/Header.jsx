@@ -20,7 +20,7 @@ export default function Header () {
     const currentPage = pathname.split('/').pop();
 
   return (
-    <header className=" flex justify-center fixed top-0 w-full ">
+    <header className=" flex justify-center fixed top-0 w-full z-10">
       <div className='flex items-center w-full py-4 px-1 justify-between border-b border-gray-200 sm:w-4/5 sm:px-0'>
       <div className="flex-shrink-0">
         <img src={logo.src} alt="Logo" className="h-6 sm:h-8" />
