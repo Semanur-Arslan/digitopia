@@ -1,10 +1,9 @@
+import LoginPage from './LoginPage';
+
 export const metadata = {
-    title: "Login / Digitopia",
-  };
-  
-  import LoginPage from './LoginPage';
-  
-  export default function Page() {
-    return <LoginPage />;
-  }
-  
+  title: "Login / Digitopia",
+};
+
+export default function Page() {
+  return <LoginPage />;
+}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ButtonWithLoading = ({ isLoading, text }) => {
     return (
         <button

@@ -1,11 +1,15 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { LuArrowDownLeft } from "react-icons/lu";
 import { useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
 import { CiCirclePlus } from "react-icons/ci";
+import { useDispatch } from 'react-redux';
+import { setSelectedRecommendation } from '@/features/chart/retrieveListSlice';
+import { openRightPanel } from '@/features/rightPanel/rightPanelSlice';
 
 
 const CollapsibleBox = () => {
+    const dispatch = useDispatch();
     const t = useTranslations('ChartPage');
     const [isExpanded, setIsExpanded] = useState(true);
     const [colors, setColors] = useState({});
@@ -23,11 +27,17 @@ const CollapsibleBox = () => {
             ...acc,
             [item.id]: acc[item.id] || generateRandomColor()
         }), {}));
+        
     }, [retrieveList]);
-    
+
+    const handleItemClick = (item) => {
+        dispatch(setSelectedRecommendation(item.topicRecommendation));
+        dispatch(openRightPanel('itemDetails'));
+    };
+
 
     return (
-        <div className={`relative ${isExpanded ? 'w-72 px-4' : 'w-16 px-1' } h-96 bg-white rounded-lg transition-all duration-300 overflow-hidden `}>
+        <div className={`relative ${isExpanded ? 'w-72 px-4' : 'w-16 px-1'} h-96 bg-white rounded-lg transition-all duration-300 overflow-hidden `}>
             <div
                 className={`absolute top-0 right-0 p-2 cursor-pointer transform transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-180'}`}
                 onClick={toggleBox}
@@ -48,7 +58,12 @@ const CollapsibleBox = () => {
                 </h3>
                 <div className={`pt-8 ${isExpanded ? 'overflow-y-auto' : 'overflow-hidden ps-4'}`} style={{ height: 'calc(100% - 2rem)' }}>
                     {retrieveList.map((retrieve) => (
-                        <div className='mx-2 my-4 rounded-md'  key={retrieve.id} style={{ backgroundColor: colors[retrieve.id]  }}>
+                        <div
+                            className='mx-2 my-4 rounded-md cursor-pointer'
+                            key={retrieve.id}
+                            style={{ backgroundColor: colors[retrieve.id] }}
+                            onClick={() => handleItemClick(retrieve)}
+                        >
                             {Array.isArray(retrieve.topicRecommendation) ? (
                                 retrieve.topicRecommendation.map((item) => (
                                     <div className='bg-gray ms-6 p-2 flex justify-between text-sm' key={item.id}>
@@ -66,7 +81,7 @@ const CollapsibleBox = () => {
                     ))}
                 </div>
                 <button
-                     className={` bg-opacity-50 text-black text-sm bg-primary py-1 rounded-md hover:bg-primary flex  items-center ${isExpanded ? 'justify-center justify-center w-full' : 'justify-start ps-2'}`}
+                    className={` bg-opacity-50 text-black text-sm bg-primary py-1 rounded-md hover:bg-primary flex  items-center ${isExpanded ? 'justify-center justify-center w-full' : 'justify-start ps-2'}`}
                 >
                     <CiCirclePlus size={20} />
                     <span className='ps-1 text-nowrap'> {t('btnText')}</span>

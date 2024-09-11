@@ -1,20 +1,21 @@
 'use client'
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '@/app/api/login/route';
-import { setTokens } from '../../../features/auth/authSlice';
-import "../../../styles/login.css";
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { login } from '@/app/api/login/route';
+import { setTokens } from '@/features/auth/authSlice';
+import "@/styles/login.css";
 import { addToast } from '@/features/toast/toastSlice';
 import ButtonWithLoading from '@/components/Button';
-import { useTranslations } from 'next-intl';
+
 
 export default function LoginPage() {
   const t = useTranslations('LoginPage');
 
+  const router = useRouter();
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth.status);
-
-
 
   const [formData, setFormData] = useState({
     email: '',
@@ -40,7 +41,7 @@ export default function LoginPage() {
           refreshToken,
           accessToken
         }));
-        
+        router.push('/home');
       } else {
         dispatch(addToast({ message: 'Login failed', type: 'error' }));
       }

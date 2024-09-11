@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
-import "../../styles/globals.css";
-import ReduxProvider from '../provider';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
+import "../../styles/globals.css";
+import ReduxProvider from '../provider';
 import ClientLayout from "./clientLayout";
 
 const geistSans = localFont({

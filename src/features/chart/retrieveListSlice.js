@@ -7,12 +7,17 @@ const RetrieveListSlice = createSlice({
   name: 'retrieveList',
   initialState: {
     list: [],
+    selectedRecommendation: null, 
     status: 'idle',
     error: null,
+
   },
   reducers: {
     setRetrieveList: (state, action) => {
       state.list = action.payload;
+    },
+    setSelectedRecommendation: (state, action) => {
+      state.selectedRecommendation = action.payload;
     },
     setError: (state, action) => {
       state.error = action.payload;
@@ -26,7 +31,7 @@ const RetrieveListSlice = createSlice({
   },
 });
 
-export const { setRetrieveList, setError, setLoading, setLoaded } = RetrieveListSlice.actions;
+export const { setRetrieveList, setSelectedRecommendation, setError, setLoading, setLoaded } = RetrieveListSlice.actions;
 
 export const fetchRetrieveList = () => async (dispatch, getState ) => {
   dispatch(setLoading());

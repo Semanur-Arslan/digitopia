@@ -1,10 +1,9 @@
+import HomePage from './HomePage';
+
 export const metadata = {
-    title: "Home / Digitopia",
-  };
-  
-  import HomePage from './HomePage';
-  
-  export default function Page() {
-    return <HomePage />;
-  }
-  
+  title: "Home / Digitopia",
+};
+
+export default function Page() {
+  return <HomePage />;
+}
