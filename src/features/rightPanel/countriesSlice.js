@@ -1,5 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getCountries } from '@/app/api/rightPanel/route';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+export const fetchCountries = createAsyncThunk(
+  'countries/fetchCountries',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/api/countries`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Veri alma başarısız');
+    }
+  }
+);
 
 const countriesSlice = createSlice({
   name: 'countries',
@@ -9,33 +21,23 @@ const countriesSlice = createSlice({
     error: null,
   },
   reducers: {
-    setCountries: (state, action) => {
-      state.list = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    setLoading: (state) => {
-      state.status = 'loading';
-    },
-    setLoaded: (state) => {
-      state.status = 'succeeded';
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCountries.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCountries.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.list = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchCountries.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
   },
 });
 
-export const { setCountries, setError, setLoading, setLoaded } = countriesSlice.actions;
-
-export const fetchCountries = () => async (dispatch) => {
-  dispatch(setLoading());
-  try {
-    const response = await getCountries();
-    dispatch(setCountries(response));
-    dispatch(setLoaded());
-    dispatch(setError(null));
-  } catch (error) {
-    dispatch(setError(error.toString()));
-  }
-};
-
 export default countriesSlice.reducer;
+
