@@ -3,22 +3,26 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation'
 import { useTransition } from 'react';
 import { useDispatch } from 'react-redux';
-import { setLocale } from '@/features/language/languageSlice'
+import { setLocale } from '@/features/language/languageSlice';
+import setCookie from '@/utils/cookieUtils';
+
 const LanguageSelector = () => {
-  
+
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const pathname = usePathname()
-  
+
   const pathWithoutLocale = pathname.replace(/^\/(en|tr)/, '');
 
   const onSelectChange = (e) => {
     const nextLocale = e.target.value;
 
-    dispatch(setLocale(nextLocale)); 
+    dispatch(setLocale(nextLocale));
+
+    setCookie('locale', nextLocale, { expires: 2 });
 
     startTransition(() => {
       router.replace(`/${nextLocale}/${pathWithoutLocale}`);

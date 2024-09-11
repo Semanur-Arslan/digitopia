@@ -8,6 +8,8 @@ import { setTokens } from '@/features/auth/authSlice';
 import "@/styles/login.css";
 import { addToast } from '@/features/toast/toastSlice';
 import ButtonWithLoading from '@/components/Button';
+import setCookie from '@/utils/cookieUtils';
+
 
 
 export default function LoginPage() {
@@ -41,6 +43,9 @@ export default function LoginPage() {
           refreshToken,
           accessToken
         }));
+
+        setCookie('accessToken', accessToken, { expires: 2 });
+
         router.push('/home');
       } else {
         dispatch(addToast({ message: 'Login failed', type: 'error' }));
